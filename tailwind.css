@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-*{
+* {
  max-width: 1600px;
  margin: 0;
  padding: 0;
@@ -11,6 +11,7 @@
 }
 
 /* header section */
+
 
 .container {
      background-color:#412567;
@@ -61,15 +62,179 @@ button {
 
 
 /* banner section */
+:root {
+    --bg-deep: #0f051d;
+    --accent-gradient: linear-gradient(135deg, #ff00ff, #ff9900);
+    --neon-green: #00ff88;
+}
 
-.container2 {
+body {
+    margin: 0;
+    background-color: var(--bg-deep);
+    font-family: 'Inter', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- Animations --- */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.4); }
+    50% { box-shadow: 0 0 50px rgba(255, 0, 255, 0.7); }
+}
+
+@keyframes wave-move {
+    0% { transform: scaleY(0.8); opacity: 0.3; }
+    50% { transform: scaleY(1.2); opacity: 0.6; }
+    100% { transform: scaleY(0.8); opacity: 0.3; }
+}
+
+/* --- Hero Layout --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    background: url('assets/hero-bg.png') no-repeat center;
+    padding-top: 50px;
+}
+
+/* --- The Microphone --- */
+.mic-wrapper {
+    position: relative;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite;
+    margin-bottom: 30px;
+}
+
+.mic-circle {
+    width: 200px;
+    height: 200px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse-glow 3s infinite;
+}
+
+.mic-icon {
+    width: 80px;
+    filter: brightness(0) invert(1); /* Makes the icon white */
+}
+
+.badge-new {
+    position: absolute;
+    top: 20px;
+    right: -10px;
+    background: var(--neon-green);
+    color: black;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 12px;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* --- Typography --- */
+.logo-text {
+    font-size: 64px;
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.logo-text span {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+    color: #b3a1cf;
+    font-size: 18px;
+    max-width: 500px;
+    margin: 20px auto 40px;
+}
+
+/* --- Buttons --- */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-spotify {
+    background: var(--accent-gradient);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-subscribe {
+    border: 1px solid var(--neon-green);
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--neon-green);
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-subscribe:hover {
+    background: rgba(0, 255, 136, 0.1);
+    transform: translateY(-3px);
+}
+
+/* --- Soundwaves --- */
+.wave-container {
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* .wave-container.left { left: 50px; }
+.wave-container.right { right: 50px; } */
+
+/* Simple CSS Soundwave recreation */
+.wave-container::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    
+    background-size: contain;
+    filter: hue-rotate(280deg) saturate(2);
+    animation: wave-move 2s infinite ease-in-out;
+}
+
+
+
+
+
+/* .container2 {
     height:100vh;
     background-image: url(assets/hero-bg.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
-}
+} */
 
 
 /* card design */
@@ -107,7 +272,7 @@ button {
     text-align: center;
     padding-left: 25px;
     padding-right: 25px;
-    padding-top: 50px;
+    padding-top: 80px;
     padding-bottom: 120px;
 
 }
@@ -293,7 +458,7 @@ button {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     /* padding: 0 20px 20px 20px; */
-    color: #00ff88; /
+    color: #00ff88; 
     font-size: 14px;
     font-weight: 600;
 
@@ -375,5 +540,56 @@ button {
     background: #ff33ff;
     color: white;
 }
+
+
+/* Footer design */
+
+.footer {
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-image: url(assets/footer-bg.png);
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.footer-logo span {
+    background: linear-gradient(to right, #ff66ff, #ff33ff);
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.ss-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.ss-links a {
+    color: #b3a1cf;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.copyright {
+    color: #554477;
+    font-size: 12px;
+}
+
+
+
+
+
+
 
 
